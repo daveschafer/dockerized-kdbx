@@ -2,4 +2,4 @@
 
 ## Example Database
 
-The password for the Example.kdbx is `password`. Do not use this Datbase in production.
+The password for the Example.kdbx is `password`. Do not use this Database in production.
