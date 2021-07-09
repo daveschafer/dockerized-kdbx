@@ -1,0 +1,21 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history
+
+#no configs
+fail2ban.env
+app.config.personal
+htpasswd
+checklist.md
+docker-compose.v2.yaml
+dkdbx-quickstart.sh
+#no archive
+_archive/
+#no logs files
+log/nginx/*

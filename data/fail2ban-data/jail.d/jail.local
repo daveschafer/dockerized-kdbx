@@ -1,0 +1,39 @@
+# File:
+# "./data/fail2ban-data/jail.d/jail.local"
+
+# Some global configs are already set in the ./env/fail2ban/jail.d/jail.local file (default actions ...)
+[DEFAULT]
+# Number of seconds that a host is banned.
+bantime  = 10800 # ban for 3 hours
+
+# "ignoreip" can be an IP address, a CIDR mask or a DNS host.
+# Fail2ban will not ban a host which matches an address in this list.
+# Several addresses can be defined using space separator.
+ignoreip = 127.0.0.1/8 73.176.154.35
+
+# attempts must occur within the 10-minute
+findtime = 600
+
+# How many attempts can be made before a ban is imposed
+maxretry = 3
+
+
+[nginx-http-auth]
+enabled = true
+filter = nginx-http-auth
+port    = http,https
+#bantime = 10800 #3 hours
+logpath = /var/log/error.log
+# known issue is that the iptables entry are not correctly applied, therefore this fix
+# https://github.com/fail2ban/fail2ban/issues/2292#issuecomment-522141827
+chain = DOCKER-USER
+
+
+[nginx-botsearch]
+enabled = true
+port     = http,https
+#logpath  = %(nginx_error_log)s
+#maxretry = 2
+filter = nginx-botsearch
+logpath = /var/log/error.log
+chain = DOCKER-USER
